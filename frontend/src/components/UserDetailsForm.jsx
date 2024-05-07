@@ -1,23 +1,33 @@
 import React, { useState } from 'react';
+import { addUser } from '../config/services/userDetails';
 
 const UserDetailsForm = ({ onSubmit }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Form validation can be added here if needed
-    const userDetails = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-    };
-    onSubmit(userDetails);
-    // Optionally, you can reset the form fields after submission
-    setFirstName('');
-    setLastName('');
-    setEmail('');
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      // Form validation can be added here if needed
+      const params = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+      };
+
+      let userDetails = await addUser(params)
+
+
+
+      // Optionally, you can reset the form fields after submission
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+    }
+    catch (err) {
+      console.error(err, '..error');
+    }
   };
 
   return (
