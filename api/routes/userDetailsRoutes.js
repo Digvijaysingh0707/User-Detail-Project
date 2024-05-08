@@ -12,4 +12,33 @@ router.post("/add", async (req, res) => {
   }
 })
 
+router.get("/get", async (req, res) => {
+  try {
+    const result = await userDetailsFunction.getUserList({ ...req.query });
+    return res.status(200).json(result)
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+})
+
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    const result = await userDetailsFunction.deleteUser(req);
+    return res.status(200).json(result)
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+})
+
+router.put("/update", async (req, res) => {
+
+  try {
+
+    const result = await userDetailsFunction.updateUser({ ...req.body });
+    return res.status(200).json(result)
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+})
+
 module.exports = router
