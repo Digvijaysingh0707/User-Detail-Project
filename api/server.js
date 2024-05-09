@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const userDetailsRoutes = require("./routes/userDetailsRoutes")
+const countDetailsRoutes = require("./routes/countRoutes")
 const app = express();
 
 app.use(cors());
@@ -20,4 +21,6 @@ app.listen(PORT, () => {
 
 
 app.use("/user", userDetailsRoutes)
+app.use("/count", countDetailsRoutes)
+
 

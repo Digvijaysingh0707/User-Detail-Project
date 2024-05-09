@@ -1,8 +1,10 @@
 const userDetailsController = require("../controllers/userDetailsController")
+const countController = require("../controllers/countController")
 
 const createUserDetails = async (params) => {
   try {
     const result = await userDetailsController.createUserDetails(params)
+    const updateCount = await countController.increCount({ addCount: 1 })
     return { message: "User added successfully", result }
   } catch (error) {
     throw { errorMessage: error };
@@ -33,6 +35,7 @@ const deleteUser = async (params) => {
 const updateUser = async (params) => {
   try {
     const result = await userDetailsController.updateUser(params)
+    const updateCount = await countController.increCount({ updateCount: 1 })
     return { message: "User updated successfully", result }
   } catch (error) {
     throw { errorMessage: error };
