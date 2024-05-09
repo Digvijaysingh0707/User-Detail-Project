@@ -80,8 +80,7 @@ const ResizableComponent = () => {
     if (showCountDetails) {
       fetchCountDetails()
     }
-    else
-      fetchAllUser()
+    fetchAllUser()
   }, [check, pageNo, showCountDetails])
 
 
