@@ -4,5 +4,11 @@ export const endPoint = {
   },
   user: {
     addUser: "/user/add",
+    userList: "/user/get",
+    deleteUser: "/user/delete",
+    updateUser: "/user/update"
   },
+  count: {
+    getCount: "/count/get",
+  }
 };

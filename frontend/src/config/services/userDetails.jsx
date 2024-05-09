@@ -1,9 +1,9 @@
 import { endPoint } from "../settings/urls";
 import axios from "axios";
 
-export function listRivews(params) {
-  let _url = `${endPoint.url.Apiurl}${endPoint.review.getData}`
-  return axios.get(_url, {params});
+export function getUserList(params) {
+  let _url = `${endPoint.url.Apiurl}${endPoint.user.userList}`
+  return axios.get(_url, { params });
 }
 
 export function addUser(params) {
@@ -11,14 +11,16 @@ export function addUser(params) {
   return axios.post(_url, params);
 }
 
-export function deleteReview(params) {
+export function deleteUser(params) {
   let id = params._id;
-  let _url = `${endPoint.url.Apiurl}/review/${id}`;
-  return axios.delete(_url);
+
+  let _url = `${endPoint.url.Apiurl}/user/delete/${id}`;
+
+  return axios.delete(_url, params);
 }
 
-export function updateReview(params) {
+export function updateUser(params) {
   let id = params._id;
-  let _url = `${endPoint.url.Apiurl}/review/${id}`;
+  let _url = `${endPoint.url.Apiurl}${endPoint.user.updateUser}`;
   return axios.put(_url, params);
 }
